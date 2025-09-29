@@ -1,9 +1,14 @@
 import torch
 import numpy as np
+from random import seed
 
 ### seed is important
+# https://docs.pytorch.org/docs/stable/notes/randomness.html
 torch.manual_seed(23)
 np.random.seed(23)
+seed(23)
+
+### basics
 
 tensor1 = torch.randint(2, 10, [3,4])
 tensor2 = torch.randint(2, 10, [3,4])
@@ -106,3 +111,22 @@ array = array.numpy()
 print(type(array))
 
 print(array)
+
+
+### Accesing GPU
+# Could computing options: Google Cloud, AWS, Azure
+
+print(torch.cuda.is_available())
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+print(torch.cuda.device_count())
+
+tensor = torch.randint(1, 10, 
+                       [2, 3, 4], 
+                       device=device)
+# changing the divice
+tensor1.to(device)
+
+# to change tensor into numpy device must be changed to cpu
+tensor1.cpu().numpy()
