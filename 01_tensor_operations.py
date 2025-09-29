@@ -129,4 +129,4 @@ tensor = torch.randint(1, 10,
 tensor1.to(device)
 
 # to change tensor into numpy device must be changed to cpu
-tensor1.cpu().numpy()
+tensor1.cpu().numpy() 
