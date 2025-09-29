@@ -1,4 +1,9 @@
 import torch
+import numpy as np
+
+### seed is important
+torch.manual_seed(23)
+np.random.seed(23)
 
 tensor1 = torch.randint(2, 10, [3,4])
 tensor2 = torch.randint(2, 10, [3,4])
@@ -85,3 +90,19 @@ print(tensor[1,1,2]) #working
 
 # indexing order is corresponding to dimention order
 
+print(tensor[1,0:2,0:2]) #2D tensor
+print(tensor[0, 0, 0:2]) #1D tensor
+print(tensor[0, 0]) # 1D
+print(tensor[0, 0, :]) # the same 1D 
+print(tensor[:, 0, 0]) # 1D
+print(tensor[:, :, 0]) # 2D
+
+### Pytorch and Numpy
+array = np.random.randint(0, 20, [2,3,5])
+print(type(array))
+array = torch.from_numpy(array)
+print(type(array))
+array = array.numpy()
+print(type(array))
+
+print(array)
